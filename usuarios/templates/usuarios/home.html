@@ -1,0 +1,17 @@
+{% extends 'usuarios/base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+{% if modo_demo %}<div class="demo-notice" role="status">Modo demostración: podés visualizar el portal, pero para enviar solicitudes necesitás iniciar sesión.</div>{% endif %}
+<section class="welcome-panel">
+    <div><p class="eyebrow">Bienvenido al portal</p><h1>Soluciones para vos y tu familia.</h1><p class="intro">Gestioná tus beneficios como empleado asociado de Aseguradora Yacyretá de manera simple y segura.</p></div>
+    <div class="welcome-badge" aria-hidden="true"><span>AYSA</span><small>ASOCIADOS</small></div>
+</section>
+<section class="services-section" aria-labelledby="services-title">
+    <div class="section-heading"><div><p class="eyebrow">Gestiones disponibles</p><h2 id="services-title">¿Qué necesitás hoy?</h2></div><span class="service-count">02 servicios</span></div>
+    <div class="service-grid">
+        <article class="service-card service-card-coral"><div class="card-icon">V</div><p class="card-kicker">Ayuda inmediata</p><h3>Generar vale</h3><p>Solicitá un adelanto de dinero para resolver tus necesidades del momento.</p><a class="card-link" href="{% url 'generar_vale' %}">Solicitar vale <span aria-hidden="true">&#8594;</span></a></article>
+        <article class="service-card service-card-teal"><div class="card-icon">P</div><p class="card-kicker">Planificá tus proyectos</p><h3>Pedir préstamo</h3><p>Presentá tu pedido de préstamo y conocé las condiciones para acceder al beneficio.</p><a class="card-link" href="{% url 'pedir_prestamo' %}">Iniciar pedido <span aria-hidden="true">&#8594;</span></a></article>
+    </div>
+</section>
+<section class="help-strip"><span class="help-icon">i</span><div><strong>¿Necesitás ayuda?</strong><p>El equipo de atención al asociado está disponible para acompañarte en tu gestión.</p></div></section>
+{% endblock %}

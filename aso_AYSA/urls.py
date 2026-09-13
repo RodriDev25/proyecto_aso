@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from usuarios import views
 
 urlpatterns = [
+    path('', views.home, name='home'),
+    path('iniciar-sesion/', views.iniciar_sesion, name='iniciar_sesion'),
+    path('demo/', views.demo_home, name='demo_home'),
+    path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
+    path('microsoft/login/', views.microsoft_login, name='microsoft_login'),
+    path('microsoft/callback/', views.microsoft_callback, name='microsoft_callback'),
+    path('vale/', views.generar_vale, name='generar_vale'),
+    path('prestamo/', views.pedir_prestamo, name='pedir_prestamo'),
     path('admin/', admin.site.urls),
 ]

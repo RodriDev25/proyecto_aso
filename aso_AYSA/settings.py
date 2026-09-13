@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'aso_AYSA.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = '/iniciar-sesion/'
+LOGIN_REDIRECT_URL = '/'
+MICROSOFT_CLIENT_ID = os.getenv('MICROSOFT_CLIENT_ID', '')
+MICROSOFT_CLIENT_SECRET = os.getenv('MICROSOFT_CLIENT_SECRET', '')
+MICROSOFT_TENANT = os.getenv('MICROSOFT_TENANT', 'common')
+
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
@@ -75,7 +87,7 @@ WSGI_APPLICATION = 'aso_AYSA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_firebird',
-        'NAME': r'C:\Rodrigo\Proyectos\proyecto_aso\DB_DEV.fdb',  # O la ruta en Windows: r'C:\Firebird\bd\mi_base.fdb'
+        'NAME': BASE_DIR / 'DB_DEV.FDB',
         'USER': 'SYSDBA',
         'PASSWORD': '147369',                 # Tu contraseña de Firebird
         'HOST': 'localhost',                    # O la IP de tu servidor Firebird
@@ -122,6 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
 # Email

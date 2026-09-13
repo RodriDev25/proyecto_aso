@@ -1,7 +1,8 @@
+from pathlib import Path
+
 import firebird.driver as fb
 
-# Ruta absoluta exacta a tu proyecto de Django
-db_path = r"C:\Rodrigo\Proyectos\proyecto_aso\db_dev.fdb"
+db_path = Path(__file__).resolve().parent.parent / 'DB_DEV.FDB'
 user = "SYSDBA"
 password = "147369"  # Pon la contraseña que configuraste
 

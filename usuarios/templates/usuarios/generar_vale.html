@@ -1,0 +1,10 @@
+{% extends 'usuarios/base.html' %}
+{% block title %}Generar vale{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">&#8592; Volver al inicio</a>
+<section class="form-intro"><p class="eyebrow">Ayuda inmediata</p><h1>Generar vale</h1><p>Completá los datos para solicitar un adelanto. La solicitud será revisada por el equipo de la Asociación.</p></section>
+<form class="request-form" method="post">{% csrf_token %}{{ form.non_field_errors }}<div class="form-grid">
+    <label for="{{ form.monto.id_for_label }}">{{ form.monto.label }}{{ form.monto }}{{ form.monto.errors }}</label>
+    <label for="{{ form.motivo.id_for_label }}">{{ form.motivo.label }}{{ form.motivo }}{{ form.motivo.errors }}</label>
+</div><label for="{{ form.observaciones.id_for_label }}">{{ form.observaciones.label }} <span class="optional">(opcional)</span>{{ form.observaciones }}{{ form.observaciones.errors }}</label><div class="form-actions"><a class="button button-secondary" href="{% url 'home' %}">Cancelar</a><button class="button button-primary" type="submit">Enviar solicitud</button></div></form>
+{% endblock %}

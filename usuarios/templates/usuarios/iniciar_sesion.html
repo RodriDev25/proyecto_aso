@@ -1,0 +1,16 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<section class="login-panel">
+    <img class="login-logo" src="{% static 'logo.png' %}" alt="Aseguradora Yacyretá">
+    <p class="eyebrow">Portal del asociado</p>
+    <h1>Ingresá con tu cuenta Microsoft</h1>
+    <p>Usá tu correo corporativo Outlook o Hotmail para acceder a tus gestiones de vales y préstamos.</p>
+    <a class="button microsoft-button" href="{% url 'microsoft_login' %}"><span class="microsoft-mark" aria-hidden="true">&#9638;</span> Continuar con Microsoft</a>
+    <small class="login-note">Al continuar, Microsoft validará tu identidad de forma segura.</small>
+    {% if debug %}<a class="demo-link" href="{% url 'demo_home' %}">Ver pantalla de inicio en modo demostración</a>{% endif %}
+</section>
+{% endblock %}

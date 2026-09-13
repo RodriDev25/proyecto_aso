@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portal del asociado{% endblock %} | AYSA</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/styles.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'home' %}">
+            <img class="brand-logo" src="{% static 'logo.png' %}" alt="Aseguradora Yacyretá">
+            <span><strong>Portal del asociado</strong><small>Servicios para empleados</small></span>
+        </a>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'cerrar_sesion' %}">{% csrf_token %}<button class="header-label logout-button" type="submit">Cerrar sesión</button></form>
+        {% else %}
+            <span class="header-label">Servicios para empleados</span>
+        {% endif %}
+    </header>
+    <main class="page-shell">
+        {% if messages %}{% for message in messages %}<div class="message message-success" role="status">{{ message }}</div>{% endfor %}{% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer"><span>Aseguradora Yacyretá S.A.</span><span>Atención al asociado</span></footer>
+</body>
+</html>

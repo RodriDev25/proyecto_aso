@@ -1,0 +1,11 @@
+{% extends 'usuarios/base.html' %}
+{% block title %}Pedir préstamo{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">&#8592; Volver al inicio</a>
+<section class="form-intro"><p class="eyebrow">Planificá tus proyectos</p><h1>Pedido de préstamo</h1><p>Contanos qué necesitás y el equipo evaluará tu solicitud según las condiciones vigentes para asociados.</p></section>
+<form class="request-form" method="post">{% csrf_token %}{{ form.non_field_errors }}<div class="form-grid">
+    <label for="{{ form.monto.id_for_label }}">{{ form.monto.label }}{{ form.monto }}{{ form.monto.errors }}</label>
+    <label for="{{ form.plazo_meses.id_for_label }}">{{ form.plazo_meses.label }}{{ form.plazo_meses }}{{ form.plazo_meses.errors }}</label>
+    <label for="{{ form.destino.id_for_label }}">{{ form.destino.label }}{{ form.destino }}{{ form.destino.errors }}</label>
+</div><label for="{{ form.detalle.id_for_label }}">{{ form.detalle.label }}{{ form.detalle }}{{ form.detalle.errors }}</label><div class="form-actions"><a class="button button-secondary" href="{% url 'home' %}">Cancelar</a><button class="button button-primary" type="submit">Enviar pedido</button></div></form>
+{% endblock %}
